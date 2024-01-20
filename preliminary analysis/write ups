@@ -1,0 +1,28 @@
+Compliation of various analysis task writeups - using ECLS K 2011 dataset 
+
+
+(see coresponding code 1)
+
+Addressing the associations between gender; and certian child demographics as well as spring time literacy and math scores with a future connection made
+to spring approaches to learning :
+
+On average, our findings indicate that girls scored slightly higher on the spring literacy assessment (ES = 0.158; p < 0.001). 
+When we examine the approaches to learning, our results reveal on average, girls also tend to exhibit moderately more positive behaviors in the spring (ES = 0.488; p < 0.001).
+Our results show that in the springtime, male kindergarteners are moderately taller on average by about half an inch and approximately six months older (p < 0.001). 
+However, it's important to note we did not find any significant gender differences in spring math scores or in the number of siblings children have (p > 0.05).
+
+(see corresponding code 2)
+
+Addressing the associtations between SES and certian child social and academic demographics :
+
+As indicated in Table 1, we found a relationship between poverty status and spring card sort scores, with kindergarteners in the medium quintile of SES scoring higher 
+than low SES (ES=0.25) – yet a lower score than high SES (ES= 0.26; p<.001). There was a slight difference between medium status and medium-high, with medium-high placing
+higher (ES= 0.15; p<.01). There were comparable results between medium and medium-low status (p>.05). Our results continued to show a relationship between SES and other 
+variables, with SES defining a role within spring number reversals. Moderate SES status kindergarteners scored on average higher than low (ES = 0.52) and medium-low status
+SES children (ES = 0.2; p<.001). However, medium-high and high SES children scored higher than medium (ES=0.21; ES=0.38; p<.001) respectively. The number of books parents 
+reported having at home for children was similarly affected by SES status; with medium SES children having on average 45 more books than low, and 20 more than medium-low – medium 
+SES trended towards having fewer books than medium-high and high; with medium-high reporting 27 more, and high with an additional 47 books (p<.001). We continued to see a 
+relationship between SES and other factors including a relationship with fall BMI. Moderate SES children scored lower than medium-high and high (ES =0.14; ES=0.27; p<.001), as well as
+lower than low-status children (ES= 0.13; p<.001). Lastly, we found no relationship between children’s spring age and poverty status (p>.05).
+
+(see corresponding code 3)
