@@ -26,3 +26,26 @@ relationship between SES and other factors including a relationship with fall BM
 lower than low-status children (ES= 0.13; p<.001). Lastly, we found no relationship between children’s spring age and poverty status (p>.05).
 
 (see corresponding code 3)
+
+An investigation into associations between children's level of kindergarten involvement and their subsequent math skill 
+achievement :
+
+As seen in Table 1, model 1 suggests that on average and on an adjusted basis, children who
+attend a full day of kindergarten exhibit a greater improvement in math skills compared to their
+half-day peers (ES = 0.88, p<.001). Model 1, including the baseline score, explains roughly 67%
+of the variability in math skill development (p<.001). Model 2 continues to address math skill
+growth while also accounting for additional student characteristics. Our results suggest that
+social class is positively associated with math skill development during kindergarten (p<.001).
+Specifically, on average we see a one-standard deviation increase in social class associated with
+a 0.07 standard deviation increase in math skills. We also find that holding all else equal,
+students whose primary home language is not English is positively associated with a 0.06
+standard deviation increase in math skill development compared to their English-speaking peers
+(p<.001). Conversely, on an adjusted basis, we find that on average, students with IEPs have a
+-0.15 standard deviation decrease in math skill development compared to their peers without
+disabilities (p<.001). Continuing to hold all other covariants constant, our model suggested a
+positive association between children’s age and math skill development (p<.01), showing that on
+average a one-month increase in age is associated with a 0.004 standard deviation increase in
+math learning. We saw no differences in math scores between boys and girls (p >.05). Overall,
+including the baseline math scores, our model explains roughly 67% of the variability in math
+skill development (p<.001).
+
