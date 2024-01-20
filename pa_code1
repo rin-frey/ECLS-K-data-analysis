@@ -1,0 +1,203 @@
+. // associations between : .
+. // sex (FEMALE) & .
+. // spring literacy (X2RSCALK1)
+. // spring math scores (X2MSCALK1)
+. // age (X2KAGE_R)
+. // # siblings (X1NUMSIB)
+. // spring approaches to learning (X2TCHAPP)
+. // height (X1HEIGHT) .
+. // scv (standarize continious variable)
+. // ev (equal variances?) .
+. ********************************************************************************
+. ******************************************************************************** .
+. * Sex and spring literacy FEMALE, X2RSCALK1
+ .
+. // scv
+. egen zscore_X2RSCALK1 = std(X2RSCALK1) (989 missing values generated)
+.
+. // ev
+. oneway zscore_X2RSCALK1 FEMALE
+Analysis of variance
+Source SS df MS F Prob > F
+------------------------------------------------------------------------ Between groups 107.419414 1 107.419414 108.18 0.0000
+Within groups 17028.9561 17150 .992942047 ------------------------------------------------------------------------
+Total 17136.3755 17151 .999147311
+Bartlett's equal-variances test: chi2(1) =
+.
+. * Prob>chi2 = 0.028 (unequal) .
+. // t test
+. ttest zscore_X2RSCALK1, by(FEMALE) unequal
+4.8348 Prob>chi2 = 0.028
+Two-sample t test with unequal variances ------------------------------------------------------------------------------
+Group | Obs Mean Std. err. Std. dev. [95% conf. interval] ---------+-------------------------------------------------------------------- MALE| 8,746 -.0767021 .0107783 1.007991 -.0978302 -.055574 FEMALE| 8,406 .0816046 .0107361 .9843285 .0605593 .10265 ---------+-------------------------------------------------------------------- Combined | 17,152 .0008822 .0076323 .9995736 -.0140779 .0158424 ---------+-------------------------------------------------------------------- diff | -.1583067 .015213 -.1881258 -.1284876 ------------------------------------------------------------------------------ diff = mean(MALE) - mean(FEMALE) t = -10.4060
+H0:diff=0
+Ha: diff Pr(T < t) =
+Satterthwaite's degrees of freedom = 17145.7
+< 0 0.0000
+Ha: diff != 0 Pr(|T| > |t|) = 0.0000
+Ha: diff > 0 Pr(T > t) = 1.0000
+.
+. // reject null, p < 0.001
+. * p = 0.000
+. // ES = - 0.158 // SMALL .
+. * results suggest that on average, there is a small diffence in spring literacy scores, with female children scoring hi
+> gher.
+.
+. ******************************************************************************** .
+. * Sex and spring math FEMALE, X2MSCALK1 .
+. // scv
+. egen zscore_X2MSCALK1 = std(X2MSCALK1) (1,031 missing values generated)
+.
+. // ev
+. oneway zscore_X2MSCALK1 FEMALE
+
+ Analysis of variance
+Source SS df MS F Prob > F
+------------------------------------------------------------------------ Between groups .100123078 1 .100123078 0.10 0.7515
+Within groups 17085.7264 17108 .998698059 ------------------------------------------------------------------------
+Total 17085.8265 17109 .998645538 Bartlett's equal-variances test: chi2(1) = 94.7422
+.
+. * Prob>chi2 = 0.000 (unequal) .
+. // t test
+. ttest zscore_X2MSCALK1, by(FEMALE) unequal
+Prob>chi2 = 0.000
+Two-sample t test with unequal variances ------------------------------------------------------------------------------
+Group | Obs Mean Std. err. Std. dev. [95% conf. interval] ---------+-------------------------------------------------------------------- MALE| 8,715 -.0009489 .0112421 1.049494 -.022986 .0210882 FEMALE| 8,395 .00389 .0103082 .9444796 -.0163166 .0240966 ---------+-------------------------------------------------------------------- Combined | 17,110 .0014253 .0076398 .9993225 -.0135494 .0164001 ---------+-------------------------------------------------------------------- diff | -.0048389 .0152526 -.0347357 .0250578 ------------------------------------------------------------------------------ diff = mean(MALE) - mean(FEMALE) t = -0.3173
+H0:diff=0
+Ha: diff Pr(T < t) =
+< 0 0.3755
+Satterthwaite's degrees of freedom = 17029.7
+Ha: diff != 0 Ha: diff > 0 Pr(|T| > |t|) = 0.7511 Pr(T > t) = 0.6245
+.
+. // fail to
+. * p = 0.7511
+. * results suggest that on average there is no statisical difference between genders on spring math scores
+.
+.
+. ******************************************************************************** .
+. * Sex and age FEMALE, X2KAGE_R .
+. // no scv
+. // ev
+. oneway X2KAGE_R FEMALE
+Analysis of variance
+reject null / p > 0.05 /
+Source ------------------------------------------------------------------------ Between groups 1525.56886 1 1525.56886 76.58 0.0000
+Within groups 341917.422 17164 19.9206142 ------------------------------------------------------------------------
+Total 343442.99 17165 20.0083303
+Bartlett's equal-variances test: chi2(1) = 17.2824 Prob>chi2 = 0.000
+.
+. * Prob>chi2 = 0.000 (unequal) .
+SS df MS F Prob > F
+
+ . //t test
+. ttest X2KAGE_R, by(FEMALE) unequal
+Two-sample t test with unequal variances ------------------------------------------------------------------------------
+Group | Obs Mean Std. err. Std. dev. [95% conf. interval] ---------+-------------------------------------------------------------------- MALE| 8,757 73.73652 .0487314 4.560227 73.641 73.83205 FEMALE| 8,409 73.14017 .0475457 4.35997 73.04697 73.23337 ---------+-------------------------------------------------------------------- Combined | 17,166 73.44439 .0341406 4.473067 73.37747 73.51131 ---------+-------------------------------------------------------------------- diff | .5963492 .0680834 .4628988 .7297995 ------------------------------------------------------------------------------ diff = mean(MALE) - mean(FEMALE) t = 8.7591
+H0:diff=0
+Ha: diff Pr(T < t) =
+Satterthwaite's degrees of freedom = 17163.7
+< 0 1.0000
+Ha: diff != 0 Pr(|T| > |t|) = 0.0000
+Ha: diff > 0 Pr(T > t) = 0.0000
+.
+. // reject null / p < 0.001
+. * p = 0.000
+. * ES = 0.596 .
+. * results suggest that on average there there is a medium/large? (depending on round?) difference in ages between gende
+> rs, with male children scoring higher .
+. ******************************************************************************** .
+. * Sex and # sibs FEMALE, X1NUMSIB .
+. // no scv
+. // ev
+. oneway X1NUMSIB FEMALE
+Analysis of variance
+Source ------------------------------------------------------------------------ Between groups .057850338 1 .057850338 0.05 0.8310
+Within groups 17019.2193 13397 1.2703754 ------------------------------------------------------------------------
+Total 17019.2771 13398 1.2702849
+Bartlett's equal-variances test: chi2(1) =
+.
+. * Prob>chi2 = 0.884 (equal) .
+. // t test
+. ttest X1NUMSIB, by(FEMALE)
+0.0213 Prob>chi2 = 0.884
+SS df MS F Prob > F
+Two-sample t test with equal variances ------------------------------------------------------------------------------
+Group | Obs Mean Std. err. Std. dev. [95% conf. interval] ---------+-------------------------------------------------------------------- MALE| 6,889 1.480041 .0135914 1.128085 1.453397 1.506684 FEMALE| 6,510 1.475883 .0139565 1.126076 1.448524 1.503243 ---------+-------------------------------------------------------------------- Combined | 13,399 1.478021 .0097368 1.127069 1.458935 1.497106 ---------+--------------------------------------------------------------------
+
+ diff | .0041574 .019482 -.0340301 .0423449 ------------------------------------------------------------------------------
+diff = mean(MALE) - mean(FEMALE) H0:diff=0
+t= Degrees of freedom =
+0.2134 13397
+> 0 0.4155
+Ha: diff Pr(T < t) =
+< 0 0.5845
+Ha: Pr(|T| >
+diff != 0 |t|) = 0.8310
+Ha: diff Pr(T > t) =
+.
+. // fail to .*p= 0.8310 .
+. * results suggest there is no stat .
+.
+. ****************************************************************************** .
+. * Sex and spring approaches to learning FEMALE, X2TCHAPP .
+. // scv
+. egen zscore_X2TCHAPP = std(X2TCHAPP) (2,196 missing values generated)
+.
+. // ev
+. oneway zscore_X2TCHAPP FEMALE
+Analysis of variance
+Source SS df MS F Prob > F
+------------------------------------------------------------------------ Between groups 951.16059 1 951.16059 1012.44 0.0000
+Within groups 14981.7786 15947 .939473167 ------------------------------------------------------------------------
+reject null / p > 0.05
+Total 15932.9392 15948 .999055629 Bartlett's equal-variances test: chi2(1) = 76.4199
+.
+. * Prob>chi2 = 0.000 (unequal) .
+. // t test
+. ttest zscore_X2TCHAPP, by(FEMALE) unequal
+Prob>chi2 = 0.000
+difference between genders and number of siblings
+Two-sample t test with unequal variances ------------------------------------------------------------------------------
+Group | Obs Mean Std. err. Std. dev. [95% conf. interval] ---------+-------------------------------------------------------------------- MALE| 8,148 -.2381935 .0112385 1.014459 -.2602239 -.2161632 FEMALE| 7,801 .2503385 .0104128 .9196907 .2299266 .2707503 ---------+-------------------------------------------------------------------- Combined | 15,949 .000758 .0079146 .9995277 -.0147555 .0162715 ---------+-------------------------------------------------------------------- diff | -.488532 .0153209 -.5185627 -.4585013 ------------------------------------------------------------------------------ diff = mean(MALE) - mean(FEMALE) t = -31.8866
+H0:diff=0
+Ha: diff Pr(T < t) =
+< 0 0.0000
+Satterthwaite's degrees of freedom = 15899.9
+Ha: diff != 0 Ha: diff > 0 Pr(|T| > |t|) = 0.0000 Pr(T > t) = 1.0000
+.
+. // reject null / p < 0.001
+
+. * p = 0.000
+. * ES = - 0.488 .
+. * results suggest there is a medium/moderate stat difference in genders with female children scoring higher
+.
+.
+. ****************************************************************************** .
+. * Sex and height FEMALE X1HEIGHT .
+. // no scv
+. // ev
+. oneway X1HEIGHT FEMALE
+Analysis of variance
+Source ------------------------------------------------------------------------ Between groups 651.165897 1 651.165897 145.54 0.0000
+Within groups 70105.8571 15669 4.47417558 ------------------------------------------------------------------------
+Total 70757.023 15670 4.51544499
+Bartlett's equal-variances test: chi2(1) =
+.
+. * Prob>chi2 = 0.665 (equal) .
+. //t test
+. ttest X1HEIGHT, by(FEMALE)
+0.1879 Prob>chi2 = 0.665
+SS df MS F Prob > F
+Two-sample t test with equal variances ------------------------------------------------------------------------------
+Group | Obs Mean Std. err. Std. dev. [95% conf. interval] ---------+-------------------------------------------------------------------- MALE| 8,005 44.93423 .0235848 2.11015 44.888 44.98047 FEMALE| 7,666 44.52645 .024219 2.120511 44.47898 44.57393 ---------+-------------------------------------------------------------------- Combined | 15,671 44.73475 .0169747 2.124958 44.70148 44.76803 ---------+-------------------------------------------------------------------- diff | .407783 .0338018 .3415276 .4740384 ------------------------------------------------------------------------------
+diff = mean(MALE) - mean(FEMALE) H0: diff = 0
+t = 12.0639 Degrees of freedom = 15669
+Ha: diff < 0 Pr(T < t) = 1.0000
+Ha: diff != 0 Pr(|T| > |t|) = 0.0000
+Ha: diff > 0 Pr(T > t) = 0.0000
+.
+. //reject null / p < 0.001
+. * p = 0.000
+. * ES = 0.407 .
+. * results suggest there is a medium/moderate stat difference in genders with presenting higher
+.
