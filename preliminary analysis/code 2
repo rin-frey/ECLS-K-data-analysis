@@ -1,0 +1,57 @@
+// create quintile version of SES // X12SESL
+ // low, med-lw, med, med high, high
+
+ // X2DCCSTOT spring card sort combined score
+ // X2NRWABL spring numbers reversed score 
+ // X1BMI fall BMI
+ // X2KAGE_R child's spring age
+ // P1CHLDBK parent-reported number of books the child has at home
+ 
+ // cont then cat
+ 
+ preserve
+ 
+ keep if !missing(X2DCCSTOT) & !missing(X2NRWABL) & !missing(X1BMI) & !missing(X2KAGE_R) & !missing(P1CHLDBK)
+ 
+ //zscore time!!
+ 
+ //zscore ses X12SESL
+ egen zscore_X12SESL = std(X12SESL)
+ 
+ //zscore spring card sort combined score
+ egen zscore_X2DCCSTOT = std(X2DCCSTOT)
+ 
+ //zscore spring numbers reversed score
+ egen zscore_X2NRWABL = std(X2NRWABL)
+ 
+ //zscore bmi 
+ egen zscore_X1BMI = std(X1BMI)
+ 
+ // quint and label 
+ 
+xtile quint_ses = zscore_X12SESL, nq(5)
+label variable quint_ses "SES level"
+label define ses_levels 1 "low" 2 "med-low" 3 "medium" 4 "med-high" 5 "high"
+label values quint_ses ses_levels
+
+tab quint_ses
+
+// anova time!!!
+
+
+// spring card sort combined score 
+oneway zscore_X2DCCSTOT quint_ses, tab scheffe
+
+//spring numbers reversed score
+oneway zscore_X2NRWABL quint_ses, tab scheffe
+
+// fall BMI
+oneway zscore_X1BMI quint_ses, tab scheffe
+
+// child's spring age
+oneway X2KAGE_R quint_ses, tab scheffe
+
+// parent-reported number of books the child has at home
+oneway P1CHLDBK quint_ses, tab scheffe
+
+restore
