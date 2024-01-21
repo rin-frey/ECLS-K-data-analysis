@@ -1,4 +1,5 @@
-**code 1**
+
+code 1
 ********************************************************************************
 
 * Sex and spring literacy FEMALE, X2RSCALK1
@@ -26,7 +27,7 @@ oneway X1HEIGHT FEMALE
 ttest X1HEIGHT, by(FEMALE)
 
 ********************************************************************************
-**code 2**
+code 2
 ********************************************************************************
 
 preserve
@@ -70,4 +71,19 @@ egen zs_X12SESL = std(X12SESL)
 nestreg: reg zs_X2MTHETK1 (FULLDAY zs_X1MTHETK1) (zs_X12SESL FEMALE X2KAGE_R DISABILITY NONENGL)
 
 restore
+
+********************************************************************************
+code 4
+********************************************************************************
+
+
+preserve
+keep if !missing(FULLDAY) & !missing(P2DISTHM) & !missing(X1NUMSIB) & !missing(X2POVTY) & !missing(DISABILITY)
+// P2DISTHM - distance from home to school
+// recoding poverty
+
+recode X2POVTY (1 = 1) (2/3 = 2), gen(new_poverty)
+reg FULLDAY DISABILITY P2DISTHM X1NUMSIB new_poverty restore
+
+
 
