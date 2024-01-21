@@ -1,0 +1,73 @@
+**code 1**
+********************************************************************************
+
+* Sex and spring literacy FEMALE, X2RSCALK1
+egen zscore_X2RSCALK1 = std(X2RSCALK1)
+oneway zscore_X2RSCALK1 FEMALE
+
+ttest zscore_X2RSCALK1, by(FEMALE) unequal
+
+egen zscore_X2MSCALK1 = std(X2MSCALK1)
+oneway zscore_X2MSCALK1 FEMALE
+ttest zscore_X2MSCALK1, by(FEMALE) unequal
+
+oneway X2KAGE_R FEMALE
+ttest X2KAGE_R,  by(FEMALE) unequal
+
+
+oneway X1NUMSIB FEMALE
+ttest X1NUMSIB, by(FEMALE) 
+
+egen zscore_X2TCHAPP = std(X2TCHAPP)
+oneway zscore_X2TCHAPP FEMALE
+ttest zscore_X2TCHAPP, by(FEMALE) unequal
+
+oneway X1HEIGHT FEMALE
+ttest X1HEIGHT, by(FEMALE)
+
+********************************************************************************
+**code 2**
+********************************************************************************
+
+preserve
+ 
+keep if !missing(X2DCCSTOT) & !missing(X2NRWABL) & !missing(X1BMI) & !missing(X2KAGE_R) & !missing(P1CHLDBK)
+
+egen zscore_X12SESL = std(X12SESL)
+egen zscore_X2DCCSTOT = std(X2DCCSTOT)
+egen zscore_X2NRWABL = std(X2NRWABL)
+egen zscore_X1BMI = std(X1BMI)
+
+xtile quint_ses = zscore_X12SESL, nq(5)
+label variable quint_ses "SES level"
+label define ses_levels 1 "low" 2 "med-low" 3 "medium" 4 "med-high" 5 "high"
+label values quint_ses ses_levels
+
+tab quint_ses
+
+oneway zscore_X2DCCSTOT quint_ses, tab scheffe
+oneway zscore_X2NRWABL quint_ses, tab scheffe
+oneway zscore_X1BMI quint_ses, tab scheffe
+oneway X2KAGE_R quint_ses, tab scheffe
+oneway P1CHLDBK quint_ses, tab scheffe
+
+restore
+
+********************************************************************************
+**code 3**
+********************************************************************************
+
+preserve
+//data cleaning
+keep if !missing(FULLDAY) & !missing(X2MTHETK1) & !missing(X1MTHETK1) & !missing(X12SESL) & !missing(FEMALE) & 
+!missing(X2KAGE_R) & !missing(DISABILITY) & !missing(NONENGL)
+
+// zscore 
+egen zs_X1MTHETK1 = std(X1MTHETK1)
+egen zs_X2MTHETK1 = std(X2MTHETK1)
+egen zs_X12SESL = std(X12SESL)
+
+nestreg: reg zs_X2MTHETK1 (FULLDAY zs_X1MTHETK1) (zs_X12SESL FEMALE X2KAGE_R DISABILITY NONENGL)
+
+restore
+
