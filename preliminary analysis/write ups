@@ -1,7 +1,7 @@
 Compliation of various analysis task writeups - using ECLS K 2011 dataset 
 
 
-(see coresponding code 1)
+**(see coresponding code 1)**
 
 Addressing the associations between gender; and certian child demographics as well as spring time literacy and math scores with a future connection made
 to spring approaches to learning :
@@ -11,7 +11,7 @@ When we examine the approaches to learning, our results reveal on average, girls
 Our results show that in the springtime, male kindergarteners are moderately taller on average by about half an inch and approximately six months older (p < 0.001). 
 However, it's important to note we did not find any significant gender differences in spring math scores or in the number of siblings children have (p > 0.05).
 
-(see corresponding code 2)
+**(see corresponding code 2)**
 
 Addressing the associtations between SES and certian child social and academic demographics :
 
@@ -25,7 +25,7 @@ SES trended towards having fewer books than medium-high and high; with medium-hi
 relationship between SES and other factors including a relationship with fall BMI. Moderate SES children scored lower than medium-high and high (ES =0.14; ES=0.27; p<.001), as well as
 lower than low-status children (ES= 0.13; p<.001). Lastly, we found no relationship between children’s spring age and poverty status (p>.05).
 
-(see corresponding code 3)
+**(see corresponding code 3)**
 
 An investigation into associations between children's level of kindergarten involvement and their subsequent math skill 
 achievement :
@@ -48,4 +48,16 @@ average a one-month increase in age is associated with a 0.004 standard deviatio
 math learning. We saw no differences in math scores between boys and girls (p >.05). Overall,
 including the baseline math scores, our model explains roughly 67% of the variability in math
 skill development (p<.001).
+
+**(see corresponding code 4)**
+
+Table 1 displays the results of our linear probability model estimating full day attendance. We find that on an
+adjusted basis, a one mile increase in distance from the school the child attends is associated with about a 0.5 
+percentage point increase in likelihood of attending a full day of kindergarten (p<.001). We also find, holding all 
+else equal, that every one additional sibling is associated with about a three percentage point decrease in likelihood 
+of attending a full day of school (p<.001). Similarly, on an adjusted basis, we find that living below the poverty 
+threshold is associated with about an eight percentage point decrease in the likelihood of attending a full day of 
+kindergarten (p<.001). Holding all else constant, children with an IEP and those without have equal probabilities of 
+attending full day kindergarten (p>.05).
+
 
